@@ -4,20 +4,40 @@
 # In[ ]:
 
 
-inputSTR = "私（わたし）がリンゴを食べます。彼（かれ）が本を読みます。私（わたし）が友達を見ます。彼女（かのじょ）が花を買います。私（わたし）が犬を飼います。田中さんが車を運転します。あなたが手紙を書きます。先生が生徒に教えます。子供がお菓子を食べます。あなたが問題を解決します。友達がプレゼントを持ってきます。彼が日本語を話します。先生が質問に答えます。私が夕食を作ります。彼女がピアノを弾きます。あなたが助けを求めます。子供が遊びます。先生が新しい言葉を教えます。私がお茶を飲みます。彼がボールを投げます。"
+inputSTR = input()
+inputLIST = list(inputSTR)
 
 def caseparse(inputLIST):
+    li = [0, 0, 0]
+    for i in range(len(inputLIST)):
+        if inputLIST[i] == 'が':
+            li[0] = i
+        if inputLIST[i] == 'を':
+            li[1] = i
+        if inputLIST[i] == 'ま':
+            li[2] = i
+    return li
+        
     
 def extractSubject(inputLIST):
+    li = caseparse(inputLIST)
+    for i in range(li[0]):
+        return inputLIST[i]
     
 def extractObject(inputLIST):
+    li = caseparse(inputLIST)
+    i = li[0] + 1
+    for i in range(li[1]):
+        return inputLIST[i]
     
 def extractVerb (inputLIST):
+    li = caseparse(inputLIST)
+    i = li[1] + 1
+    for i in range(li[2]):
+        return inputLIST[i]
 
 
-resultDICT = {
-    "Subject" = 
-    "Object" = 
-    "Verb" = 
-}
+Subject=extractSubject(inputLIST)
+Object=extractObject(inputLIST)
+Verb=extractVerb (inputLIST)
 
