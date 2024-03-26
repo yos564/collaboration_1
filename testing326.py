@@ -5,7 +5,7 @@
 import re
 role = re.compile(r'が')
 result_split = role.split('私がリンゴを食べます')
-print(result_split)
+print(result_split)   #['私', 'リンゴを食べます']
 
 
 
