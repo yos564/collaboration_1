@@ -4,8 +4,8 @@
 
 #testing1
 import re     #Regualr expression
-role = re.compile(r'が')
-result_split = role.split('私がリンゴを食べます')
+a= re.compile(r'が')
+result_split = a.split('私がリンゴを食べます')
 print(result_split)   #['私', 'リンゴを食べます']
 
 
