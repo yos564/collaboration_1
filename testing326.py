@@ -15,3 +15,8 @@ text = '私がリンゴを食べます'
 result_split = re.split(r'が|を|ます', text)    # pattern
 print(result_split)
 
+final= []
+for i in result_split:
+    if i:
+        final.append(i)
+print(final)
