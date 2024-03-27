@@ -27,7 +27,10 @@ def extractSubject(inputLIST):
 def extractObject(inputLIST):
     index_list = caseparse(inputLIST)
     obj = inputLIST[index_list[0]+1:index_list[1]]
-    return''.join(obj)
+    if index_list[1] != 0:
+        return''.join(obj)
+    else:
+        return "no object"
 
 def extractVerb(inputLIST):
     index_list = caseparse(inputLIST)
