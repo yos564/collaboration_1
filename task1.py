@@ -10,7 +10,12 @@ whole_list = inputSTR.split('。 ')
 def caseparse(inputLIST):
     index_list = [0, 0, 0]
     index_list[0] = inputLIST.index('が') if 'が' in inputLIST else 0
-    index_list[1] = inputLIST.index('を') if 'を' in inputLIST else 0
+    if 'を' in inputLIST:
+        index_list[1] = inputLIST.index('を') 
+    elif 'に' in inputLIST:
+        index_list[1] = inputLIST.index('に') 
+    else:
+        index_list[1] = 0
     index_list[2] = inputLIST.index('ま') if 'ま' in inputLIST else 0
     return index_list
     
