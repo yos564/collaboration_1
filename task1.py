@@ -8,43 +8,26 @@ inputSTR = f.read().replace('\n'," ")
 whole_list = inputSTR.split('。 ')
 
 def caseparse(inputLIST):
-    li = [0, 0, 0]
-    for i in range(len(inputLIST)):
-        if inputLIST[i] == 'が':
-            li[0] = i
-        if inputLIST[i] == 'を':
-            li[1] = i
-        if inputLIST[i] == 'ま':
-            li[2] = i
-    return li
+    index_list = [0, 0, 0]
+    index_list[0] = inputLIST.index('が') if 'が' in inputLIST else 0
+    index_list[1] = inputLIST.index('を') if 'を' in inputLIST else 0
+    index_list[2] = inputLIST.index('ま') if 'ま' in inputLIST else 0
+    return index_list
     
 def extractSubject(inputLIST):
-    li0 = inputLIST
-    li = caseparse(li0)
-    li2 = list()
-    for i in range(li[0]):
-        li2.append(inputLIST[i])
-    return''.join(li2)
+    index_list = caseparse(inputLIST)
+    sub = inputLIST[0:index_list[0]]
+    return''.join(sub)
 
 def extractObject(inputLIST):
-    li0 = inputLIST
-    li = caseparse(li0)
-    li2 = list()
-    i = li[0] + 1
-    while i < li[1]:
-        li2.append(inputLIST[i])
-        i+=1
-    return''.join(li2)
+    index_list = caseparse(inputLIST)
+    obj = inputLIST[index_list[0]+1:index_list[1]]
+    return''.join(obj)
 
 def extractVerb(inputLIST):
-    li0 = inputLIST
-    li = caseparse(li0)
-    li2 = list()
-    i = li[1] + 1
-    while i < li[2]:
-        li2.append(inputLIST[i])
-        i+=1
-    return''.join(li2)
+    index_list = caseparse(inputLIST)
+    verb = inputLIST[index_list[1]+1:index_list[2]]
+    return''.join(verb)
 
     
 for i in whole_list:
@@ -54,6 +37,9 @@ for i in whole_list:
         if j == ' ' or j == '。':
             inputLIST.pop(inputLIST.index(j))
     
-    print(inputLIST)
     resultDICT = {"Subject":extractSubject(inputLIST), "Object":extractObject(inputLIST), "Verb":extractVerb(inputLIST)}
-    print(f"The result for sentence {whole_list.index(i)+1} is: \n", resultDICT, '\n')
+
+    print(f"Results for sentence {whole_list.index(i)+1}: \nresultDICT = ","{")
+    for k,v in resultDICT.items():
+        print("\t\t",k,":",v)
+    print('\t       }')
