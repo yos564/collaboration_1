@@ -22,6 +22,9 @@ for i in result_split:
 print(final)
 
 #tesing3
+
+with open('inpurSTR.txt', 'r') as f:
+line = f.readline()
 S = '私がリンゴを食べます'
 rule = r'^(.*?)が(.*?)を(.*?)ます$'     #^是符合的那個字串的起點，$是符合那個字串的最後面
 r = re.match (rule, S)                 #re.match來找匹配的字串，
